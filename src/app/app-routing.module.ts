@@ -4,7 +4,7 @@ import { HomeComponent } from './pages';
 
 const routes: Routes = [
   {
-    path: '',
+    path: '**',
     component: HomeComponent,
   },
 ];
