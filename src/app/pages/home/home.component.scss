@@ -1,0 +1,53 @@
+:host {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+
+  .content-container {
+    width: 100%;
+    max-width: 900px;
+    background: #020827;
+    padding: 2rem;
+    margin-block: 1rem;
+    border: 1px solid #7694ff;
+    min-height: calc(100% - 98px);
+    height: fit-content;
+
+    .social-media {
+      display: flex;
+      gap: 1rem;
+
+      img {
+        width: 2rem;
+      }
+    }
+
+    .header {
+      font-family: "Kalnia Glaze", serif;
+      font-weight: bold;
+      font-size: 3em;
+    }
+
+    .subheader {
+      margin: 0 0 1rem;
+    }
+
+    .spotify-embed {
+      width: 100%;
+      margin-block: 2rem;
+
+      iframe {
+        width: 100%;
+        border: 0;
+        height: 152px;
+      }
+    }
+
+    hr {
+      border: 0.1px solid #7694ff51;
+      margin-block: 1rem;
+    }
+  }
+}

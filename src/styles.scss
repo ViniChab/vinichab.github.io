@@ -1,1 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+  background-color: #262d56;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  margin: 0;
+  background-size: 220px;
+
+  &.img-1 {
+    background-image: url("/assets/images/rock.gif");
+  }
+
+  &.img-2 {
+    background-image: url("/assets/images/tom.gif");
+  }
+
+  &.img-3 {
+    background-image: url("/assets/images/distress.gif");
+  }
+
+  &.img-4 {
+    background-image: url("/assets/images/hell.gif");
+  }
+
+  &.img-5 {
+    background-image: url("/assets/images/hackerman.gif");
+  }
+
+  &.img-6 {
+    background-image: url("/assets/images/jug.gif");
+  }
+
+  &.img-7 {
+    background-image: url("/assets/images/white.gif");
+  }
+
+  &.img-8 {
+    background-image: url("/assets/images/jotaro.gif");
+  }
+
+  &.img-9 {
+    background-image: url("/assets/images/hmm.gif");
+  }
+
+  * {
+    color: #d4ebff;
+    font-family: "Open Sans", sans-serif;
+  }
+}
