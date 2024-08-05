@@ -11,7 +11,7 @@ export class DynamicContentService {
 
   constructor(private http: HttpClient) {}
 
-  public getPages(index: number = 1): void {
+  public getPages(index: number = 0): void {
     this.http.get<DynamicPage>(`${this.pagesUrl}/${index}.json`).subscribe(
       (page) => {
         this.pages.push(page);

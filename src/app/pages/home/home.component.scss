@@ -45,6 +45,16 @@
       }
     }
 
+    .page-embed {
+      border: 0;
+      width: 100%;
+    }
+
+    .go-back {
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
+
     hr {
       border: 0.1px solid #7694ff51;
       margin-block: 1rem;

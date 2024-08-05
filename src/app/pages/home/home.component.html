@@ -13,27 +13,44 @@
     </a>
   </div>
 
-  <div class="spotify-embed">
-    <iframe
-      src="https://open.spotify.com/embed/album/7AJPV0L05IyIBid97AvwVD?utm_source=generator"
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      autoplay="true"
-    ></iframe>
-    <small>
-      Tentei fazer esse treco tocar sozinho quando a página abre, mas os
-      navegadores de hoje estão muito chatos 😠
-    </small>
-  </div>
+  @if (!loadUrl) {
+    <div class="spotify-embed">
+      <iframe
+        src="https://open.spotify.com/embed/album/7AJPV0L05IyIBid97AvwVD?utm_source=generator"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        autoplay="true"
+      ></iframe>
+
+      <small>
+        Tentei fazer esse treco tocar sozinho quando a página abre, mas os
+        navegadores de hoje estão muito chatos 😠
+      </small>
+    </div>
+  }
 
   <hr />
 
-  <h3>Páginas</h3>
+  @if (loadUrl) {
+    <a class="go-back" href="/"> Voltar </a>
 
-  <div class="category-list">
-    <ul>
-      @for (page of pages) {
-      <li>{{ page.title }}</li>
-      }
-    </ul>
-  </div>
+    <iframe
+      #pageIframe
+      class="page-embed"
+      [src]="loadUrl"
+    ></iframe>
+  }
+
+  @if (!loadUrl) {
+    <h3>Páginas</h3>
+
+    <div class="category-list">
+      <ul>
+        @for(page of pages ; track i ; let i = $index) {
+        <li>
+          <a href="/{{ i }}">{{ page.title }}</a>
+        </li>
+        }
+      </ul>
+    </div>
+  }
 </div>

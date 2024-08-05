@@ -1,0 +1,12 @@
+html {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  color: #d4ebff;
+  font-family: "Open Sans", sans-serif;
+}
