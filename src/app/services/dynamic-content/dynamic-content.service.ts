@@ -5,7 +5,7 @@ import { DynamicPage } from '../../models/dynamic-page.model';
 
 @Injectable()
 export class DynamicContentService {
-  private pagesUrl = '/assets/pages';
+  private pagesUrl = 'assets/pages';
   private pages: DynamicPage[] = [];
   public pages$ = new Subject<DynamicPage[]>();
 
