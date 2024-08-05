@@ -1,5 +1,5 @@
 import {
-  OnInit,
+  AfterViewInit,
   ChangeDetectorRef,
   Component,
   ElementRef,
@@ -8,7 +8,7 @@ import {
 import { HttpClientModule } from '@angular/common/http';
 import { DynamicContentService } from 'src/app/services/dynamic-content/dynamic-content.service';
 import { DynamicPage } from '../../models/dynamic-page.model';
-import { ActivatedRoute, Params, Router, UrlSegment } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
@@ -18,7 +18,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   imports: [HttpClientModule],
   providers: [DynamicContentService],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements AfterViewInit {
   @ViewChild('pageIframe') pageIframe!: ElementRef<HTMLIFrameElement>;
   public pages: DynamicPage[] = [];
   public categories: string[] = [];
@@ -27,12 +27,11 @@ export class HomeComponent implements OnInit {
   constructor(
     private dynamicContentService: DynamicContentService,
     private activatedRoute: ActivatedRoute,
-    private router: Router,
     private domSanitizer: DomSanitizer,
     private cdr: ChangeDetectorRef
   ) {}
 
-  public ngOnInit(): void {
+  public ngAfterViewInit(): void {
     this.dynamicContentService.getPages();
 
     this.dynamicContentService.pages$.subscribe((pages) => {
@@ -63,11 +62,11 @@ export class HomeComponent implements OnInit {
    */
   private fixIframeHeight(): void {
     this.cdr.detectChanges();
+    const iframeElement: HTMLIFrameElement = this.pageIframe.nativeElement;
 
-    setTimeout(() => {
-      this.pageIframe.nativeElement.style.height =
-        this.pageIframe.nativeElement.contentWindow!.document.body
-          .scrollHeight + 'px';
-    }, 100);
+    iframeElement.addEventListener('load', () => {
+      iframeElement.style.height =
+        iframeElement.contentWindow!.document.body.scrollHeight + 'px';
+    });
   }
 }
