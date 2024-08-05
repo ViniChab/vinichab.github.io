@@ -47,7 +47,7 @@
       <ul>
         @for(page of pages ; track i ; let i = $index) {
         <li>
-          <a href="/{{ i }}">{{ page.title }}</a>
+          <a href=".?page={{ i }}">{{ page.title }}</a>
         </li>
         }
       </ul>

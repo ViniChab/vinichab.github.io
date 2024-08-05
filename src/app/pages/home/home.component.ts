@@ -1,5 +1,5 @@
 import {
-  AfterContentInit,
+  OnInit,
   ChangeDetectorRef,
   Component,
   ElementRef,
@@ -8,7 +8,7 @@ import {
 import { HttpClientModule } from '@angular/common/http';
 import { DynamicContentService } from 'src/app/services/dynamic-content/dynamic-content.service';
 import { DynamicPage } from '../../models/dynamic-page.model';
-import { ActivatedRoute, UrlSegment } from '@angular/router';
+import { ActivatedRoute, Params, Router, UrlSegment } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
@@ -18,7 +18,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   imports: [HttpClientModule],
   providers: [DynamicContentService],
 })
-export class HomeComponent implements AfterContentInit {
+export class HomeComponent implements OnInit {
   @ViewChild('pageIframe') pageIframe!: ElementRef<HTMLIFrameElement>;
   public pages: DynamicPage[] = [];
   public categories: string[] = [];
@@ -27,11 +27,12 @@ export class HomeComponent implements AfterContentInit {
   constructor(
     private dynamicContentService: DynamicContentService,
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private domSanitizer: DomSanitizer,
     private cdr: ChangeDetectorRef
   ) {}
 
-  public ngAfterContentInit(): void {
+  public ngOnInit(): void {
     this.dynamicContentService.getPages();
 
     this.dynamicContentService.pages$.subscribe((pages) => {
@@ -42,8 +43,8 @@ export class HomeComponent implements AfterContentInit {
   }
 
   private checkActivatedRoute(): void {
-    const currentUrl: UrlSegment[] = this.activatedRoute.snapshot.url;
-    const pageNumber = currentUrl.join('/')
+    const currentUrl: Params = this.activatedRoute.snapshot.queryParams;
+    const pageNumber = currentUrl['page'];
 
     if (pageNumber?.length && this.pages[+pageNumber]) {
       this.loadUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(
