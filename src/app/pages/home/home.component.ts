@@ -43,7 +43,7 @@ export class HomeComponent implements AfterContentInit {
 
   private checkActivatedRoute(): void {
     const currentUrl: UrlSegment[] = this.activatedRoute.snapshot.url;
-    const pageNumber = currentUrl.join('/').replace('blog-site/', '')
+    const pageNumber = currentUrl.join('/')
 
     if (pageNumber?.length && this.pages[+pageNumber]) {
       this.loadUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(

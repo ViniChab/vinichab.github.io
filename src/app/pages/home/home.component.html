@@ -31,7 +31,7 @@
   <hr />
 
   @if (loadUrl) {
-    <a class="go-back" href="/blog-site"> Voltar </a>
+    <a class="go-back" href="/"> Voltar </a>
 
     <iframe
       #pageIframe
@@ -47,7 +47,7 @@
       <ul>
         @for(page of pages ; track i ; let i = $index) {
         <li>
-          <a href="/blog-site/{{ i }}">{{ page.title }}</a>
+          <a href="/{{ i }}">{{ page.title }}</a>
         </li>
         }
       </ul>
