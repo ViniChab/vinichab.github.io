@@ -1,4 +1,5 @@
 {
-  "title": "title 1",
-  "content": "<h1> testando </h1>"
+  "title": "Test 1",
+  "content": "<h1> testando </h1>",
+  "category": "test"
 }

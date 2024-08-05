@@ -28,4 +28,12 @@
   <hr />
 
   <h3>Páginas</h3>
+
+  <div class="category-list">
+    <ul>
+      @for (page of pages) {
+      <li>{{ page.title }}</li>
+      }
+    </ul>
+  </div>
 </div>
