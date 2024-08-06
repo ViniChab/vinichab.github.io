@@ -65,10 +65,18 @@ export class HomeComponent implements AfterViewInit {
     const iframeElement: HTMLIFrameElement = this.pageIframe.nativeElement;
 
     iframeElement.addEventListener('load', () => {
+      iframeElement.style.height =
+        iframeElement.contentWindow!.document.body.scrollHeight + 'px';
+
       setTimeout(() => {
         iframeElement.style.height =
           iframeElement.contentWindow!.document.body.scrollHeight + 'px';
       }, 1000);
+
+      setTimeout(() => {
+        iframeElement.style.height =
+          iframeElement.contentWindow!.document.body.scrollHeight + 'px';
+      }, 5000);
     });
   }
 }
