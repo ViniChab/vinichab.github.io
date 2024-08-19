@@ -35,7 +35,6 @@ export class HomeComponent implements AfterViewInit {
     this.dynamicContentService.getPages();
 
     this.dynamicContentService.pages$.subscribe((pages) => {
-      // this.pages = [...pages.reverse()];
       this.pages = pages;
       this.categories = this.pages.map((page) => page.category);
       this.checkActivatedRoute();
