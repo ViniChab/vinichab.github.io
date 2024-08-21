@@ -24,10 +24,15 @@
       }
     }
 
+    .header-link {
+      text-decoration: none;
+    }
+
     .header {
       font-family: "Kalnia Glaze", serif;
       font-weight: bold;
       font-size: 3em;
+      cursor: pointer;
     }
 
     .subheader {
