@@ -39,18 +39,7 @@
       margin: 0 0 1rem;
     }
 
-    .spotify-embed {
-      width: 100%;
-      margin-block: 2rem;
-
-      iframe {
-        width: 100%;
-        border: 0;
-        height: 152px;
-      }
-    }
-
-    .page-embed {
+    .loaded-page {
       border: 0;
       width: 100%;
     }

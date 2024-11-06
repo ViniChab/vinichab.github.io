@@ -1,7 +1,10 @@
 <div class="content-container">
   <a class="header-link" href="/"> <div class="header">  VINÍCIUS CHAB </div> </a>
-  <p class="subheader">Seja bem-vindo(a) ao meu domínio</p>
+  <p class="subheader">Programador programando programas</p>
   <div class="social-media">
+    <a href="https://github.com/vinichab" target="_blank">
+      <img src="assets/icons/github.svg" alt="Github" />
+    </a>
     <a href="https://www.linkedin.com/in/vinicius-chab/" target="_blank">
       <img src="assets/icons/linkedin.svg" alt="LinkedIn" />
     </a>
@@ -11,21 +14,13 @@
     <a href="https://www.twitch.tv/chabinicius" target="_blank">
       <img src="assets/icons/twitch.svg" alt="Twitch" />
     </a>
+    <a href="mailto:chabvini@gmail.com">
+      <img src="assets/icons/email.svg" alt="Email" />
+    </a>
   </div>
 
   @if (!loadUrl) {
-    <div class="spotify-embed">
-      <iframe
-        src="https://open.spotify.com/embed/album/7AJPV0L05IyIBid97AvwVD?utm_source=generator"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        autoplay="true"
-      ></iframe>
-
-      <small>
-        Tentei fazer esse treco tocar sozinho quando a página abre, mas os
-        navegadores de hoje estão muito chatos 😠
-      </small>
-    </div>
+    <vini-embedded-content></vini-embedded-content>
   }
 
   <hr />
@@ -35,7 +30,7 @@
 
     <iframe
       #pageIframe
-      class="page-embed"
+      class="loaded-page"
       [src]="loadUrl"
     ></iframe>
   }

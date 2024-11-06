@@ -11,12 +11,13 @@ import { DynamicPage } from '../../models/dynamic-page.model';
 import { ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { interval, take } from 'rxjs';
+import { EmbeddedContentComponent } from '../embedded-content/embedded-content.component';
 
 @Component({
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [HttpClientModule, EmbeddedContentComponent],
   providers: [DynamicContentService],
 })
 export class HomeComponent implements AfterViewInit {
