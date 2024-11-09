@@ -1,0 +1,17 @@
+:host {
+  .background-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(12px) brightness(0.15);
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s;
+
+    &.active {
+      opacity: 1;
+    }
+  }
+}

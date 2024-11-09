@@ -1,5 +1,5 @@
 <div class="content-container">
-  <a class="header-link" href="/"> <div class="header">  VINÍCIUS CHAB </div> </a>
+  <a class="header-link" href="/"> <div class="header">  VINI CHAB </div> </a>
   <p class="subheader">Programador programando programas</p>
   <div class="social-media">
     <a href="https://github.com/vinichab" target="_blank">
@@ -49,3 +49,11 @@
     </div>
   }
 </div>
+
+<button (click)="toggleBackgroundOverlay()" class="background-mute">
+  @if (backgroundService.showOverlay$ | async) {
+    Mostrar GIFs
+  } @else {
+    Ocultar GIFs
+  }
+</button>

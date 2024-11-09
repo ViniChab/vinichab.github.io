@@ -6,18 +6,19 @@ import {
   ViewChild,
 } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { DynamicContentService } from 'src/app/services/dynamic-content/dynamic-content.service';
 import { DynamicPage } from '../../models/dynamic-page.model';
 import { ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { interval, take } from 'rxjs';
 import { EmbeddedContentComponent } from '../embedded-content/embedded-content.component';
+import { BackgroundService, DynamicContentService } from 'src/app/services';
+import { CommonModule } from '@angular/common';
 
 @Component({
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   standalone: true,
-  imports: [HttpClientModule, EmbeddedContentComponent],
+  imports: [HttpClientModule, EmbeddedContentComponent, CommonModule],
   providers: [DynamicContentService],
 })
 export class HomeComponent implements AfterViewInit {
@@ -27,10 +28,11 @@ export class HomeComponent implements AfterViewInit {
   public loadUrl?: SafeResourceUrl;
 
   constructor(
+    public backgroundService: BackgroundService,
     private dynamicContentService: DynamicContentService,
     private activatedRoute: ActivatedRoute,
     private domSanitizer: DomSanitizer,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
   ) {}
 
   public ngAfterViewInit(): void {
@@ -41,6 +43,14 @@ export class HomeComponent implements AfterViewInit {
       this.categories = this.pages.map((page) => page.category);
       this.checkActivatedRoute();
     });
+  }
+
+  public toggleBackgroundOverlay(): void {
+    const audio = new Audio();
+    audio.src = "assets/audio/switch.mp3";
+    audio.load();
+    audio.play();
+    this.backgroundService.toggleBackgroundOverlay();
   }
 
   private checkActivatedRoute(): void {
